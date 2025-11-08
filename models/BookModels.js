@@ -1,0 +1,8 @@
+import pool from '../config/db.js';
+
+export const getBooks = async () => {
+  const [rows] = await await pool .query('SELECT * FROM books');
+  return rows;
+}
+
+
