@@ -1,9 +1,23 @@
-import mysql from 'mysql2/promise.js'
+// import mysql from 'mysql2/promise.js'
 
- const pool = mysql.createPool({
-   host: process.env.HOST,
-   user: process.env.USER,
-   password: process.env.DATABASE,
- })
+//  const pool = mysql.createPool({
+//    host: process.env.HOST,
+//    user: process.env.USER,
+//    password: process.env.DATABASE,
+//  })
 
- export default pool;
+//  export default pool;
+
+
+import mysql from "mysql2/promise.js"
+
+const pool = mysql.createPool({
+    host: process.env.HOST,
+    user: process.env.USER,
+    password:"",
+    database: process.env.DATABASE
+
+
+})
+
+export default pool;

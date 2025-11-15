@@ -57,6 +57,6 @@ try {
     console.log(e);
 }
 
-app.use('/books', bookRoutes);
+// app.use('/books', bookRoutes);
 app.use('/students', studentRoutes);
 
