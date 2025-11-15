@@ -1,8 +1,8 @@
-import * as BookModel  from '../models/BookModels.js';
+import * as BookModels  from '../models/BookModels.js';
 
 export const fetchBooks = async (req, res) => {
     try {
-        const books = await BookModel.getBooks();
+        const books = await BookModels.getBooks();
         res.status(200).json({success: true, message: books});
 
     } catch (e) {
@@ -13,6 +13,46 @@ export const fetchBooks = async (req, res) => {
          } );
     }
 };
+
+
+export const createBook = async (req, res) => {
+    const { title, genre, status } = req.body;
+
+    try {
+        const bookId = await BookModels.insertBook(title, genre, status);
+        res.status(200).json({ success: true, message: bookId });
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+};
+
+
+export const editBook = async (req, res) => {
+    const { title, genre, status } = req.body;
+    const { bookId } = req.params;
+
+    try {
+        const updatedId = await BookModels.updateBook(title, genre, status, bookId);
+        res.status(200).json({ success: true, message: updatedId });
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+};
+
+export const deleteBooks = async (req, res) => {
+    const {bookId} = req. params
+
+     try {
+        const deleteId = await BookModels.deleteBook( bookId);
+        res.status(200).json({ success: true, message: deleteId });
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+};
+
 
 
 
